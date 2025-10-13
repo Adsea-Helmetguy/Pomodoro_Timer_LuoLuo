@@ -1,24 +1,39 @@
-import './style.css'
-import typescriptLogo from './typescript.svg'
-import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.ts'
+// import {  } from "./Todolist.js"
 
-document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
-  <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://www.typescriptlang.org/" target="_blank">
-      <img src="${typescriptLogo}" class="logo vanilla" alt="TypeScript logo" />
-    </a>
-    <h1>Vite + TypeScript</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite and TypeScript logos to learn more
-    </p>
-  </div>
-`
+// Simple Pomodoro Timer
+let timeLeft = 25 * 60; // 25 minutes
+let timer: number | null = null;
 
-setupCounter(document.querySelector<HTMLButtonElement>('#counter')!)
+window.addEventListener("DOMContentLoaded", renderApp);
+window.addEventListener("popstate", renderApp);
+
+/*
+window.addEventListener("DOMContentLoaded", renderApp);
+window.addEventListener("popstate", renderApp);
+
+window.addEventListener('click', (e: Event) => {
+	const target = e.target as HTMLElement;
+	const anchor = target.closest('a');
+
+	if (anchor && anchor.href.startsWith(window.location.origin)) {
+		e.preventDefault();
+
+		const href = anchor?.getAttribute('href');
+		if (href) {
+			history.pushState({}, '', href);
+			renderApp();
+		}
+	}
+});
+
+window.addEventListener("DOMContentLoaded", () => {
+  const params = new URLSearchParams(window.location.search);
+  const userId = params.get("userId");
+
+  if (userId) {
+    localStorage.setItem("id", userId);
+    window.history.replaceState({}, document.title, "/");
+	renderApp();
+  }
+});
+*/
