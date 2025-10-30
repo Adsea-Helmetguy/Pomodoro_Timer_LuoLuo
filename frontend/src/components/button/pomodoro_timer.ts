@@ -12,10 +12,10 @@ import { timerDisplay_function, pomodoro_stop_Timer, pomodoro_startpause_Timer }
 export function pomodoro_creator(): HTMLElement {
 	//https://tailwindcss.com/docs/background-color
 	const	pomodoro_Container = buttonContainer({classes:{containerClass:"p-2", buttonClass:"flex justify-center"}, id:{containerId:"pomodoro_container", buttonId:"Pomodoro"}, customised:{text: "Pomodoro", colour: "text-blue-800", hover: true}});
-	const   shortrest_Container = buttonContainer({classes:{containerClass:"p-2", buttonClass:"flex justify-center"}, id:{containerId:"shortrest_container", buttonId:"shortrest"}, customised:{text: "Rest", colour: "text-green-600", hover: true}});
-	const	longrest_Container = buttonContainer({classes:{containerClass:"p-2", buttonClass:"flex justify-center"}, id:{containerId:"longrest_container", buttonId:"longrest"}, customised:{text: "Long break", colour: "text-red-600", hover: true}});
+	const   shortrest_Container = buttonContainer({classes:{containerClass:"p-2", buttonClass:"flex justify-center"}, id:{containerId:"shortrest_container", buttonId:"shortrest"}, customised:{text: "Rest", colour: "text-green-700", hover: true}});
+	const	longrest_Container = buttonContainer({classes:{containerClass:"p-2", buttonClass:"flex justify-center"}, id:{containerId:"longrest_container", buttonId:"longrest"}, customised:{text: "Long break", colour: "text-red-700", hover: true}});
 	const	start_pause_Container = buttonContainer({classes:{containerClass:"p-0", buttonClass:"flex justify-center"}, id:{containerId:"start_pause_container", buttonId:"start_pause_button"}, customised:{text: "Start", colour: "text-blue-800", border: "border-3", hover: true, focus: true}});
-	const	stop_Container = buttonContainer({id:{containerId:"stop_container", buttonId:"stop_button"}, classes:{containerClass:"hidden ps-10", buttonClass:"flex justify-center"}, customised:{text: "Stop", colour: "text-red-600", border: "border-3", hover: true, focus: true}});
+	const	stop_Container = buttonContainer({id:{containerId:"stop_container", buttonId:"stop_button"}, classes:{containerClass:"hidden ps-10", buttonClass:"flex justify-center"}, customised:{text: "Stop", colour: "text-red-700", border: "border-3", hover: true, focus: true}});
 	const	timerDisplay = timerDisplay_function();
 
 	// startButton.addEventListener('click', startTimer);

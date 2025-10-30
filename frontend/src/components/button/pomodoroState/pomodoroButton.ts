@@ -40,18 +40,22 @@ export function	update_timerDisplay() {
 	}
 	const timerCircle_left = document.getElementById("circleLeft");
 	const timerCircle_right = document.getElementById("circleRight");
-	if (timerCircle_left && timerCircle_right && (stateTimer.state == "rest" || stateTimer.state == "longrest")) {
+	if (timerCircle_left && timerCircle_right) {
 		timerCircle_left.classList.remove(radius_colourMap["green"], radius_colourMap["blue"], radius_colourMap["yellow"]);
 		timerCircle_right.classList.remove(radius_colourMap["green"], radius_colourMap["blue"], radius_colourMap["yellow"]);
+		timerDisplay?.classList.remove(timer_colourMap["green"], timer_colourMap["blue"], timer_colourMap["yellow"]);
 		if (stateTimer.state == "rest") {
 			timerCircle_left.classList.add(radius_colourMap["green"]);
 			timerCircle_right.classList.add(radius_colourMap["green"]);
 			timerDisplay?.classList.add(timer_colourMap["green"]);
-		}
-		if (stateTimer.state == "longrest") {
+		} else if (stateTimer.state == "longrest") {
 			timerCircle_left.classList.add(radius_colourMap["yellow"]);
 			timerCircle_right.classList.add(radius_colourMap["yellow"]);
 			timerDisplay?.classList.add(timer_colourMap["yellow"]);
+		} else {
+			timerCircle_left.classList.add(radius_colourMap["blue"]);
+			timerCircle_right.classList.add(radius_colourMap["blue"]);
+			timerDisplay?.classList.add(timer_colourMap["blue"]);
 		}
 
 	}
@@ -80,21 +84,24 @@ function	stopTimer(button: Element, pomodoro: HTMLButtonElement, rest: HTMLButto
 		stopbutton_add_hidden?.classList.add("hidden");
 
 	button.textContent = "Start";
-	button.classList.remove("text-green-600", "text-blue-800", "text-yellow-600");
+	button.classList.remove("text-green-700", "text-blue-800", "text-yellow-700");
 	button.classList.add("text-blue-800");
 	enableAll(pomodoro, rest, longrest);
+	update_timerDisplay();
 }
 
 function	countdown(button: Element, pomodoro: HTMLButtonElement, rest: HTMLButtonElement, longrest: HTMLButtonElement) {
 	stateTimer.timeLeft--;
-	update_timerDisplay();
 	if (stateTimer.timeLeft < 0) {
-        stateTimer.timeLeft = 0;
+		stateTimer.timeLeft = 0;
 		meowMp3();
 		NotifyToast_header("Pomodoro complete! 🎉 Time to take a break! 😺", 3000);
+		console.log("-----button state: ", button.textContent);
         stopTimer(button, pomodoro, rest, longrest);
-		handlePhaseEnd();
+		console.log("-----button state AFTER STOPTIMER: ", button.textContent);
+		handlePhaseEnd(button);
 	}
+	update_timerDisplay();
 }
 
 function	pauseTimer(button: Element) {
@@ -102,8 +109,8 @@ function	pauseTimer(button: Element) {
 		clearInterval(stateTimer.timer);
 		stateTimer.timer = null;
 		button.textContent = "Resume";
-		button.classList.remove("text-green-600", "text-blue-800", "text-yellow-600");
-		button.classList.add("text-yellow-600");
+		button.classList.remove("text-green-700", "text-blue-800", "text-yellow-700");
+		button.classList.add("text-yellow-700");
 		update_timerDisplay();
 		return;
 	}
@@ -114,14 +121,17 @@ function	startTimer(button: Element, pomodoro: HTMLButtonElement, rest: HTMLButt
 	if (stateTimer.timer)
 		return;
 	button.textContent = "Pause";
-	button.classList.remove("text-green-600", "text-blue-800", "text-yellow-600");
+	button.classList.remove("text-green-700", "text-blue-800", "text-yellow-700");
 	button.classList.add("text-blue-800");
-	update_timerDisplay();
 	stateTimer.timer = setInterval(() => countdown(button, pomodoro, rest, longrest), 1000);//the 3, pomodoro, rest and longrest are for enableall
+	update_timerDisplay();
 }
 
 export function	pomodoro_stop_Timer(reset_start: Element, pomodoro: HTMLButtonElement, rest: HTMLButtonElement, longrest: HTMLButtonElement) {
 	stopTimer(reset_start, pomodoro, rest, longrest);
+	// stateTimer.state = "pomodoro";
+	// stateTimer.subState = "start";
+	// switchPhase("pomodoro");
 }
 
 export function	pomodoro_startpause_Timer(button: Element, pomodoro: HTMLButtonElement, rest: HTMLButtonElement, longrest: HTMLButtonElement) {

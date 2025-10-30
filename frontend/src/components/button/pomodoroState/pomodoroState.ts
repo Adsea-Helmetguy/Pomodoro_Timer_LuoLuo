@@ -2,34 +2,29 @@ import { update_timerDisplay } from "./pomodoroButton.js"
 
 //time
 export let	timeforPomodoro = 1; //25 * 60
-export let	timeforRest = 5 * 60;
-export let	timeforLongRest = 15 * 60;
+export let	timeforRest = 2; //5 * 60
+export let	timeforLongRest = 3; //15 * 60
 let  timer: number | null = null;
 
-// type    button_status = "start" | "pause" | "resume" | "stop";
-// interface ButtonState {
-// 	start: string;
-//     pause: number;
-//     resume: number;
-//     stop: number | null;
-// }
-
 type    appState = "pomodoro" | "rest" | "longrest";
+type    subAppState = "start" | "pause" | "Resume" | "stop";
 interface PomodoroAppState {
 	state: appState;
+    subState: subAppState;
     timeLeft: number;
     cycleCount: number;
     timer: number | null;
 }
 
 const pomodoroState: Record<appState, PomodoroAppState> = {
-    pomodoro: { state: "pomodoro", timeLeft: timeforPomodoro, cycleCount: 0, timer: timer },
-    rest: { state: "rest", timeLeft: timeforRest, cycleCount: 0, timer: timer },
-    longrest: { state: "longrest", timeLeft: timeforLongRest, cycleCount: 0, timer: timer },
+    pomodoro: { state: "pomodoro", subState: "start", timeLeft: timeforPomodoro, cycleCount: 0, timer: timer },
+    rest: { state: "rest", subState: "start", timeLeft: timeforRest, cycleCount: 0, timer: timer },
+    longrest: { state: "longrest", subState: "start", timeLeft: timeforLongRest, cycleCount: 0, timer: timer },
 };
 
 export let stateTimer: PomodoroAppState = {
     state: "pomodoro",
+    subState: "start",
     timeLeft: timeforPomodoro,
     cycleCount: 0,
     timer: null,
@@ -37,16 +32,19 @@ export let stateTimer: PomodoroAppState = {
 
 export function switchPhase(next: appState) {
 	stateTimer = { ...pomodoroState[next] };
+    update_timerDisplay();
 }
 
-export function handlePhaseEnd() {
-    stateTimer.cycleCount++;
+export function handlePhaseEnd(button: Element) {
+	stateTimer.cycleCount++;
 
-    if (stateTimer.cycleCount % 4 === 0)
-        switchPhase("longrest");
-    else
-        switchPhase("rest");
-    update_timerDisplay();
+	if (button.textContent === "rest" || button.textContent === "longrest")
+		switchPhase("pomodoro");
+	else if (button.textContent === "start" && stateTimer.cycleCount % 4 === 0)
+		switchPhase("longrest");
+	else
+		switchPhase("rest");
+	update_timerDisplay();
 }
 
 

@@ -2,15 +2,15 @@
 type TailwindColor = "green" | "blue" | "yellow"; // etc
 
 const radius_colourMap: Record<TailwindColor, string> = {
-    green: "border-green-500",
+    green: "border-green-700",
     blue: "border-blue-800",
-    yellow: "border-yellow-500",
+    yellow: "border-yellow-700",
 };
 
 const timer_colourMap: Record<TailwindColor, string> = {
-    green: "text-green-500",
+    green: "text-green-700",
     blue: "text-blue-800",
-    yellow: "text-yellow-500",
+    yellow: "text-yellow-700",
 };
 
 interface Timer {
