@@ -15,21 +15,6 @@ function	homePage_container(): HTMLElement {
 	title.id = "title";
 
 	const	button = pomodoro_creator();
-	//create timer eventlistener
-	// const	startButton = buttonContainer({classes:{buttonClass:"flex justify-center"}, id:{buttonId:"Start"}});
-	// const	pauseButton = buttonContainer({classes:{buttonClass:"flex justify-center"}, id:{buttonId:"Pause"}});
-	// const	resetButton = buttonContainer({classes:{buttonClass:"flex justify-center"}, id:{buttonId:"Reset"}});
-	// startButton.addEventListener('click', startTimer);
-	// pauseButton.addEventListener('click', pauseTimer);
-	// resetButton.addEventListener('click', resetTimer);
-
-
-
-
-
-
-	//p(padding) -> space inside the element(between content and border)
-	//m(margin) -> space outside of element(between this and other elements)
 	const	titleWrapper = document.createElement("div");
 	titleWrapper.className = "flex flex-col text-2xl font-bold";
 
@@ -57,7 +42,6 @@ function Home_container_creation(): HTMLElement {
 	return homePage;
 }
 
-
 export function renderHomePage(main_container: HTMLElement, header_container: HTMLElement) {
 	const	homePage = Home_container_creation();
 	const	header = header_container_creation();
@@ -66,6 +50,40 @@ export function renderHomePage(main_container: HTMLElement, header_container: HT
 	main_container.append(homePage);
 	header_container.append(header);
 }
+
+function	page404_container(): HTMLElement {
+	const	welcomeTitle = document.createElement("p");
+	welcomeTitle.className = "flex justify-center text-2xl font-bold"
+	welcomeTitle.textContent = "Error 404";
+	welcomeTitle.id = "welcome_title";
+	const	title = document.createElement("p");
+	title.className = "flex justify-center text-2xl font-bold"
+	title.textContent = "Page does not exist";
+	title.id = "title";
+
+	const	button = pomodoro_creator();
+	const	titleWrapper = document.createElement("div");
+	titleWrapper.className = "flex flex-col text-2xl font-bold";
+
+	titleWrapper.append(welcomeTitle, title, button);
+	return(titleWrapper);
+}
+
+function Home_404_page(): HTMLElement {
+	const	titleWrapper = page404_container();
+	const	homePage = document.createElement("div");
+	homePage.className = "flex flex-col justify-center items-center text-center";
+	homePage.append(titleWrapper);
+	return homePage;
+}
+
+export function render404Page(main_container: HTMLElement) {
+	const	homePage = Home_404_page();
+	homePage.className = "py-5"
+
+	main_container.append(homePage);
+}
+
 
 //websites to look into after this with react:
 /*
