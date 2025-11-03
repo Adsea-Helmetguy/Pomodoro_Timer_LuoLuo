@@ -1,7 +1,5 @@
-import { stateTimer, switchPhase, handlePhaseEnd, timeforPomodoro, timeforRest, timeforLongRest, cyclePomodoro, cycleRest, cycleLongrest } from "../pomodoroState/pomodoroState";
+import { switchPhase } from "../pomodoroState/pomodoroState";
 
-let rest_time = 5 * 60;
-let timer = rest_time;
 
 export function buttonHeader_pomodoro() {
 	switchPhase("pomodoro");

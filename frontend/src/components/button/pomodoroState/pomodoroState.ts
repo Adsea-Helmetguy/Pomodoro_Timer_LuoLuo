@@ -32,15 +32,6 @@ export let stateTimer: PomodoroAppState = {
 };
 
 export function switchPhase(next: appState) {
-	let	currentCycle = 0;
-	
-	if (stateTimer.state === "pomodoro")
-		currentCycle = cyclePomodoro++;
-	else if (stateTimer.state === "rest")
-		currentCycle = cycleRest++;
-	else if (stateTimer.state === "longrest")
-		currentCycle = cycleLongrest++;
-
 	stateTimer = { ...pomodoroState[next]};
     update_timerDisplay();
 }

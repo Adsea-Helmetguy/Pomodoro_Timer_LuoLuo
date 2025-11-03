@@ -1,6 +1,6 @@
 import { meowMp3, NotifyToast_header } from "../pomodoroHelper/pomodoro_helper.js";
 import { timerUI } from "../pomodoroState/pomodoroColour.js";
-import { stateTimer, handlePhaseEnd, timeforPomodoro, timeforRest, timeforLongRest, cyclePomodoro, cycleRest, cycleLongrest } from "./pomodoroState";
+import { stateTimer, handlePhaseEnd, timeforPomodoro, timeforRest, timeforLongRest } from "./pomodoroState";
 
 type TailwindColor = "green" | "blue" | "yellow"; // etc
 
