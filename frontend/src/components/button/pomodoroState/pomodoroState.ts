@@ -1,9 +1,9 @@
 import { update_timerDisplay } from "./pomodoroButton.js"
 
 //time
-export let	timeforPomodoro = 1; //25 * 60
-export let	timeforRest = 2; //5 * 60
-export let	timeforLongRest = 3; //15 * 60
+export let	timeforPomodoro = 25 * 60; //25 * 60
+export let	timeforRest = 5 * 60; //5 * 60
+export let	timeforLongRest = 15 * 60; //15 * 60
 let  timer: number | null = null;
 export let	cyclePomodoro = 0;
 export let	cycleRest = 0;

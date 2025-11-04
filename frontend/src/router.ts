@@ -12,6 +12,7 @@ import { renderHomePage, render404Page } from "./homepage.js";
 //     return window.location.pathname.replace("/Pomodoro_Timer_LuoLuo", "");
 // }
 
+// clear && npm run build && npm install gh-pages && npm run deploy && npm run preview -- --port 5000
 export function renderApp() {
 	const app = document.getElementById("app")!;
 	const app_header = document.getElementById("app_header")!;

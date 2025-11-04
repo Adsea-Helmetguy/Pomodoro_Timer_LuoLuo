@@ -1,5 +1,9 @@
 export function meowMp3 () {
-    const meow = new Audio('/resources_png_mp3/cat_meow.mp3');
+	//	When you run npm run dev, Vite sets import.meta.env.BASE_URL to /
+	//	When you build for GitHub Pages, it becomes /Pomodoro_Timer_LuoLuo/
+	const audioPath = `${import.meta.env.BASE_URL}resources_png_mp3/cat_meow.mp3`;
+	console.log(import.meta.env);
+	const meow = new Audio(audioPath);
 	meow.play();
 }
 
