@@ -1,5 +1,6 @@
 # Pomodoro_Timer_LuoLuo
 My first Attempt at creating a Pomodoro Timer website
+Link: https://adsea-helmetguy.github.io/PomodoroTimerBeta-app/
 
 My Objectives:
 1) Create a simple html page that uses single page application.
@@ -8,40 +9,7 @@ My Objectives:
     be used for phone application?
 4) Does this application need backend? If yes why and how?
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-End goal:
+Target for my Second repo:
 1) make it cute and fluffly with cats
 2) connect it with github and host it there for everyone to access.
 3) Make it into a phone application where anyone can download for free
